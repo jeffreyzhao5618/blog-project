@@ -1,0 +1,22 @@
+{
+  "name": "blog-project",
+  "version": "1.0.0",
+  "description": "Personal Blog",
+  "main": "app/app.js",
+  "scripts": {
+    "start": "node app/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffreyzhao5618/blog-project.git"
+  },
+  "author": "Jeffrey Zhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffreyzhao5618/blog-project/issues"
+  },
+  "homepage": "https://github.com/jeffreyzhao5618/blog-project#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,68 @@
+.main-header {
+  background-color: #edf5e1;
+}
+
+.logo {
+  color: green !important;
+  font-size: 2.5rem;
+  text-decoration: none;
+  padding: 0;
+}
+
+.logo:hover {
+  color: green;
+  cursor: pointer;
+}
+
+.logo:hover > .dot {
+  color: lightcoral;
+}
+
+.dot {
+  transition: color 0.3s ease-in-out;
+}
+
+.main-header .navbar-nav > .nav-item {
+  color: green;
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.main-header .navbar-nav .nav-item:nth-child(1) {
+  margin-top: 1.5rem;
+}
+
+.main-header .navbar-nav > .nav-item:hover {
+  color: lightcoral;
+}
+
+.custom-toggler {
+  border: none;
+  font-size: 2rem;
+  color: green;
+  transition: color 0.3s ease-in-out;
+}
+.navbar-toggler:hover > .custom-toggler {
+  color: lightcoral;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.custom-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .main-header .navbar-nav > .nav-item {
+    padding: 1.8rem;
+  }
+
+  .main-header .navbar-nav .nav-item:nth-child(1) {
+    margin-top: 0;
+  }
+
+  .navbar-collapse {
+    width: auto;
+  }
+}
