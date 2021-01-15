@@ -101,7 +101,8 @@ router.delete("/:id", (req, res) => {
       console.log(err);
       res.json({ message: "error deleting blog post" });
     } else {
-      res.json(post);
+      if (post) res.json(post);
+      else res.json({ message: "can not find post with given id" });
     }
   });
 });
