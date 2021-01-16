@@ -5,14 +5,14 @@ function BlogPostPreviewList({ posts }) {
   return (
     <React.Fragment>
       {posts.map((post) => {
-        const { id, title, date, time, text, tags } = post;
+        const { id, title, date, time, content, tags } = post;
         return (
           <BlogPostPreview
             key={id}
             title={title}
             date={date}
             time={time}
-            text={text}
+            content={content}
             tags={tags}
           />
         );

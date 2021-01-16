@@ -2,13 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function TagList({ tags }) {
-  console.log(tags);
   return (
     <div className="tag-list mt-4">
-      <span class="text-muted">Tags: </span>
+      <span className="text-muted">Tags: </span>
       {tags.map((tag) => {
         return (
-          <Link className="secondary primary-bg badge" key={tag}>
+          <Link className="secondary primary-bg badge" key={tag} to="/">
             {tag}
           </Link>
         );

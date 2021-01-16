@@ -5,7 +5,7 @@ const BlogPostSchema = new Schema({
   title: { type: String, required: true },
   posted_on: { type: Date, default: Date.now() },
   content: { type: String, required: true },
-  tags: [Schema.Types.ObjectId],
+  tags: [String],
 });
 
 const BlogPostModel = mongoose.model("blogpost", BlogPostSchema);

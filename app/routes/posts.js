@@ -16,6 +16,21 @@ router.get("/", (req, res) => {
   });
 });
 
+// get most recent blog posts from index
+router.get("/recent/:index/:limit", (req, res) => {
+  bp.BlogPostModel.find({})
+    .skip(Number(req.params.index))
+    .limit(Number(req.params.limit))
+    .exec((err, posts) => {
+      if (err) {
+        console.log(err);
+        res.json({ message: "error getting blog posts" });
+      } else {
+        res.json(posts);
+      }
+    });
+});
+
 // get one blog post by id
 router.get("/:id", (req, res) => {
   bp.BlogPostModel.findById(req.params.id, (err, post) => {
@@ -34,22 +49,23 @@ router.post("/", (req, res) => {
 
   const foo = new Promise((resolve, reject) => {
     req.body.tags.forEach((tag, index) => {
+      tag = tag.toLowerCase();
       tg.TagModel.findOne({ name: tag }, (err, foundTag) => {
         if (err) {
           console.log(err);
           reject();
         }
         if (foundTag) {
-          tagList.push(foundTag._id);
+          tagList.push(tag);
           if (index === req.body.tags.length - 1) resolve();
         } else {
           // create tag if not found
-          tg.TagModel.create({ name: tag }, (err, createdTag) => {
+          tg.TagModel.create({ name: tag }, (err) => {
             if (err) {
               console.log(err);
               reject();
             } else {
-              tagList.push(createdTag._id);
+              tagList.push(tag);
               if (index === req.body.tags.length - 1) resolve();
             }
           });

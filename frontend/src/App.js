@@ -16,7 +16,7 @@ function App() {
                 <Route path="/about">About</Route>
                 <Route path="/contact">Contact</Route>
                 <Route path="/portfolio">Portfolio</Route>
-                <Route path="/" exact component={Home} />
+                <Route path={["/", "/page/:page"]} exact component={Home} />
                 <Route>Page Not Found</Route>
               </Switch>
             </main>
