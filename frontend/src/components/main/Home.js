@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BlogPostPreviewList from "./blog-post-preview/BlogPostPreviewList";
 import axios from "axios";
-import { getDate, getTime } from "../../utils";
+import { getDate, getTime } from "../../assets/utils";
 import { SERVER_URL } from "../../config";
 
 import "./main.css";

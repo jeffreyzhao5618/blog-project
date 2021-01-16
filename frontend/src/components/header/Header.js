@@ -41,13 +41,6 @@ function Header() {
               <NavLink
                 className="nav-item nav-link"
                 activeClassName="active"
-                to="/contact"
-              >
-                Contact
-              </NavLink>
-              <NavLink
-                className="nav-item nav-link"
-                activeClassName="active"
                 to="/portfolio"
               >
                 Portfolio

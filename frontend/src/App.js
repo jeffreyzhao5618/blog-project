@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./components/header/Header";
 import Home from "./components/main/Home";
+import About from "./components/main/About";
 import Sidebar from "./components/sidebar/Sidebar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -13,8 +14,7 @@ function App() {
           <div className="row">
             <main className="col-lg-9">
               <Switch>
-                <Route path="/about">About</Route>
-                <Route path="/contact">Contact</Route>
+                <Route path="/about" component={About} />
                 <Route path="/portfolio">Portfolio</Route>
                 <Route path={["/", "/page/:page"]} exact component={Home} />
                 <Route>Page Not Found</Route>

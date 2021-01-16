@@ -44,7 +44,3 @@ a:hover {
 a.active {
   color: lightcoral !important;
 }
-
-.card {
-  padding: 1rem;
-}
