@@ -1,5 +1,6 @@
 .card-title {
   font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .card.preview-post .content {
@@ -10,10 +11,44 @@
   font-size: 1.2rem;
 }
 
+.card-title,
+.card-text {
+  display: block;
+}
+
 .tag-list > span {
   margin: 0 0.3rem 0 0;
 }
 
 .tag-list > a {
   margin: 0 0.3rem 0 0;
+}
+
+.main-footer {
+  background-color: lightgray;
+  text-align: center;
+  padding: 2.5rem;
+  border-top: 1px solid white;
+}
+
+.main-footer > p {
+  margin: 0;
+  color: gray;
+  font-size: 1rem;
+}
+
+.home-nav-item {
+  padding: 0.8rem;
+  background-color: green;
+  color: beige;
+  text-align: center;
+  display: inline-block;
+}
+
+a > .home-nav-item:hover {
+  color: lightcoral;
+}
+
+.home-nav-item.active {
+  background-color: lightcoral;
 }

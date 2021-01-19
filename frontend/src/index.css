@@ -27,13 +27,19 @@ code {
 p {
   line-height: 1.8rem;
   font-size: 1.2rem;
-  margin: 1.7rem 0 0 0;
+  margin: 1.5rem 0 0 0;
 }
 
 a {
   text-decoration: none;
-  color: green;
   transition: color 0.15s ease-in-out;
+  color: inherit;
+}
+
+a.standard {
+  line-height: 1.8rem;
+  font-size: 1.2rem;
+  color: green;
 }
 
 a:hover {
@@ -43,4 +49,20 @@ a:hover {
 
 a.active {
   color: lightcoral !important;
+}
+
+a.gray {
+  color: gray;
+}
+
+a.gray:hover {
+  color: lightcoral;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.top-margin {
+  margin: 1.5rem 0 0 0;
 }

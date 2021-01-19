@@ -6,13 +6,17 @@ function About() {
   return (
     <div className="card preview-post mb-3">
       <picture>
-        <source srcset={mypic_775} media="(min-width: 991.98px)" />
-        <img src={mypic_626} className="card-img-top" />
+        <source srcSet={mypic_775} media="(min-width: 991.98px)" />
+        <img
+          src={mypic_626}
+          className="card-img-top"
+          alt="Jeffrey Zhao the person who created this blog."
+        />
       </picture>
       <div className="card-body">
-        <a className="card-title primary" href="#">
+        <p className="card-title primary" href="#">
           Hello There!
-        </a>
+        </p>
         <p className="card-text">
           What do people normally say in an about section anyways... I guess I
           should start by introducing myself!

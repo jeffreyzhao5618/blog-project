@@ -1,21 +1,17 @@
 import React from "react";
 import SidebarItem from "./SidebarItem";
+import RecentPosts from "./RecentPosts";
 import "./sidebar.css";
+import Contact from "./Contact";
 
 function Sidebar() {
   return (
     <React.Fragment>
-      <SidebarItem title="Current Time">
-        <p>This is a test</p>
-      </SidebarItem>
       <SidebarItem title="Recent Posts">
-        <p>This is a test</p>
+        <RecentPosts />
       </SidebarItem>
-      <SidebarItem title="Tags">
-        <p>This is a test</p>
-      </SidebarItem>
-      <SidebarItem title="Socials">
-        <p>This is a test</p>
+      <SidebarItem title="Contact">
+        <Contact />
       </SidebarItem>
     </React.Fragment>
   );

@@ -3,5 +3,15 @@
 }
 
 p.card-title {
-  margin: 0;
+  margin-top: 0;
+}
+
+.contact i {
+  font-size: 3rem;
+  margin-right: 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.contact i:hover {
+  color: lightcoral;
 }
