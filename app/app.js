@@ -1,28 +1,35 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
 const cors = require("cors");
 
 const PORT = process.env.PORT || 9000;
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["POST"],
+    credentials: true,
+  })
+);
 app.use(express.json());
-// BASIC auth middleware
-app.use((req, res, next) => {
-  if (req.method === "GET") next();
-  else {
-    const auth = { login: "admin", password: process.env.ADMIN_PASSWORD };
+app.use(
+  cookieSession({
+    name: "cookie-session",
+    secret: process.env.SESSION_SECRET,
+    expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
+  })
+);
 
-    const b64auth = req.headers.authorization.split(" ")[1];
-    const [login, password] = Buffer.from(b64auth, "base64")
-      .toString("ascii")
-      .split(":");
-    if (login === auth.login && password === auth.password) {
-      next();
-    } else {
-      res.json({ message: "not authorized to make this request" });
-    }
+// auth middleware
+app.use((req, res, next) => {
+  if (req.method === "GET" || req.path === "/admin/login") next();
+  else if (req.session.key === process.env.POST_AUTH) {
+    next();
+  } else {
+    res.json({ message: "not authorized to make this request" });
   }
 });
 
@@ -36,7 +43,8 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 app.use("/posts", require("./routes/posts.js"));
-app.use("/tags", require("./routes/tags"));
+app.use("/tags", require("./routes/tags.js"));
+app.use("/admin", require("./routes/admin.js"));
 
 // const test = new bp.BlogPostModel({
 //   title: "Test DB Post 4",
@@ -57,5 +65,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Server listending on port " + PORT);
+  console.log("Server listening on port " + PORT);
 });

@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const express = require("express");
 const bp = require("../models/BlogPost");
 const tg = require("../models/Tag");
@@ -9,7 +8,7 @@ router.get("/", (req, res) => {
   bp.BlogPostModel.find((err, posts) => {
     if (err) {
       console.log(err);
-      res.json({ message: "error getting blog posts" });
+      res.json({ error: "error getting blog posts" });
     } else {
       res.json(posts);
     }
@@ -17,28 +16,55 @@ router.get("/", (req, res) => {
 });
 
 // get most recent blog posts from index
-router.get("/recent/:index/:limit", (req, res) => {
+router.get("/all/recent/:index/:limit", (req, res) => {
   bp.BlogPostModel.find({})
     .skip(Number(req.params.index))
     .limit(Number(req.params.limit))
     .exec((err, posts) => {
       if (err) {
         console.log(err);
-        res.json({ message: "error getting blog posts" });
+        res.json({ error: "error getting blog posts" });
       } else {
         res.json(posts);
       }
     });
 });
 
+// get titles of recent blog posts
+router.get("/titles/recent/:limit", (req, res) => {
+  bp.BlogPostModel.find({}, "title")
+    .limit(Number(req.params.limit))
+    .exec((err, titles) => {
+      if (err) {
+        console.log(err);
+        res.json({ error: "error getting blog posts" });
+      } else {
+        res.json(titles);
+      }
+    });
+});
+
 // get one blog post by id
-router.get("/:id", (req, res) => {
+router.get("/id/:id", (req, res) => {
+  //console.log(req.session);
   bp.BlogPostModel.findById(req.params.id, (err, post) => {
     if (err) {
       console.log(err);
-      res.json({ message: "error getting blog post" });
+      res.json({ error: "error getting blog post" });
     } else {
       res.json(post);
+    }
+  });
+});
+
+// get number of blog posts
+router.get("/count", (req, res) => {
+  bp.BlogPostModel.count({}, (err, count) => {
+    if (err) {
+      console.log(err);
+      res.json({ error: "error getting number of posts" });
+    } else {
+      res.json({ count });
     }
   });
 });
@@ -84,7 +110,7 @@ router.post("/", (req, res) => {
       (err, post) => {
         if (err) {
           console.log(err);
-          res.json({ message: "error creating blog post" });
+          res.json({ error: "error creating blog post" });
         } else {
           res.json(post);
         }
@@ -102,7 +128,7 @@ router.post("/:id", (req, res) => {
     (err, post) => {
       if (err) {
         console.log(err);
-        res.json({ message: "error updating blog post" });
+        res.json({ error: "error updating blog post" });
       } else {
         res.json(post);
       }
@@ -115,10 +141,10 @@ router.delete("/:id", (req, res) => {
   bp.BlogPostModel.findByIdAndDelete(req.params.id, (err, post) => {
     if (err) {
       console.log(err);
-      res.json({ message: "error deleting blog post" });
+      res.json({ error: "error deleting blog post" });
     } else {
       if (post) res.json(post);
-      else res.json({ message: "can not find post with given id" });
+      else res.json({ error: "can not find post with given id" });
     }
   });
 });

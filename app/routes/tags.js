@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const express = require("express");
 const tg = require("../models/Tag");
 const router = express.Router();
@@ -8,7 +7,7 @@ router.get("/", (req, res) => {
   tg.TagModel.find((err, tags) => {
     if (err) {
       console.log(err);
-      res.json({ message: "error getting tags" });
+      res.json({ error: "error getting tags" });
     } else {
       res.json(tags);
     }
@@ -20,7 +19,7 @@ router.get("/id/:id", (req, res) => {
   tg.TagModel.findById(req.params.id, (err, tag) => {
     if (err) {
       console.log(err);
-      res.json({ message: "error getting tag" });
+      res.json({ error: "error getting tag" });
     } else {
       res.json(tag);
     }
@@ -32,7 +31,7 @@ router.get("/name/:name", (req, res) => {
   tg.TagModel.findOne({ name: req.params.name }, (err, tag) => {
     if (err) {
       console.log(err);
-      res.json({ message: "error getting tag" });
+      res.json({ error: "error getting tag" });
     } else {
       res.json(tag);
     }
@@ -40,11 +39,11 @@ router.get("/name/:name", (req, res) => {
 });
 
 // create tag
-router.post("/:name", (req, res) => {
+router.post("/name/:name", (req, res) => {
   tag.TagModel.create({ name: req.params.name.toLowerCase() }, (err, tag) => {
     if (err) {
       console.log(err);
-      res.json({ message: "error creating tag" });
+      res.json({ error: "error creating tag" });
     } else {
       res.json(tag);
     }
@@ -52,11 +51,11 @@ router.post("/:name", (req, res) => {
 });
 
 // delete tag by id
-router.delete("/:id", (req, res) => {
+router.delete("/id/:id", (req, res) => {
   tag.TagModel.findByIdAndDelete(req.params.id, (err, tag) => {
     if (err) {
       console.log(err);
-      res.json({ message: "error deleting tag" });
+      res.json({ error: "error deleting tag" });
     } else {
       res.json(tag);
     }

@@ -7,13 +7,15 @@ import Portfolio from "./components/main/Portfolio";
 import Post from "./components/main/Post";
 import Sidebar from "./components/sidebar/Sidebar";
 import Footer from "./components/main/Footer";
+import AdminLogin from "./components/admin/AdminLogin";
 import Admin from "./components/admin/Admin";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route component={Admin} />
+        <Route path="/admin" exact component={Admin} />
+        <Route path="/admin/login" component={AdminLogin} />
         <Route component={Blog} />
       </Switch>
     </Router>

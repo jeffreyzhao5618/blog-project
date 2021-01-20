@@ -1,33 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
+import { SERVER_URL } from "../../config";
 
-function Admin() {
-  return (
-    <div className="card mt-5 w-50 mx-auto">
-      <form className="card-body">
-        <div className="form-group">
-          <label htmlFor="inputUsername">Username</label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputUsername"
-            placeholder="Username"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="inputPassword">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="inputPassword"
-            placeholder="Password"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary mt-3">
-          Log In
-        </button>
-      </form>
-    </div>
-  );
+class Admin extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      redirect: false,
+      loggedin: false,
+    };
+  }
+
+  render() {
+    if (this.state.redirect) {
+      return <Redirect to="/admin/login" />;
+    } else if (this.state.loggedin) {
+      return <div>Admin</div>;
+    } else return null;
+  }
+
+  componentDidMount() {
+    axios
+      .get(`${SERVER_URL}/admin/login`, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        if (res.data.loggedin) {
+          this.setState({ loggedin: true });
+        } else {
+          this.setState({ redirect: true });
+        }
+      });
+  }
 }
 
 export default Admin;
