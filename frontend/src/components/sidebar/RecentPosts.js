@@ -14,7 +14,7 @@ class RecentPosts extends Component {
 
   render() {
     return (
-      <div className="top-margin">
+      <React.Fragment>
         {this.state.recent_posts.map((post) => {
           return (
             <Link
@@ -26,7 +26,7 @@ class RecentPosts extends Component {
             </Link>
           );
         })}
-      </div>
+      </React.Fragment>
     );
   }
 

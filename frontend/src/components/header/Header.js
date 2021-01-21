@@ -8,7 +8,11 @@ function Header() {
       <div className="container">
         <nav className="navbar navbar-expand-md justify-content-between">
           <Link className="logo navbar-brand" to="/">
-            c<span className="dot">●</span>grass
+            c
+            <span className="dot">
+              <i class="fas fa-circle"></i>
+            </span>
+            grass
           </Link>
           <button
             className="navbar-toggler"

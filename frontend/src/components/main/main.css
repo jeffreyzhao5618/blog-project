@@ -3,6 +3,10 @@
   margin-bottom: 0.5rem;
 }
 
+p.card-title {
+  padding: 0.6rem 0;
+}
+
 .card.preview-post .content {
   max-height: 25rem;
   overflow: hidden;

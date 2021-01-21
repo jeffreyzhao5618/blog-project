@@ -2,7 +2,7 @@ import React from "react";
 
 function Contact() {
   return (
-    <div className="contact top-margin">
+    <div className="contact">
       <a href="mailto:jeffreyzhao5618@gmail.com">
         <i className="fas fa-envelope-square primary"></i>
       </a>

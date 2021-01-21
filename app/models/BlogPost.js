@@ -8,9 +8,17 @@ const BlogPostSchema = new Schema({
   tags: [String],
 });
 
+const AdminPostSchema = new Schema({
+  title: { type: String },
+  content: { type: String },
+  tags: [String],
+});
+
 const BlogPostModel = mongoose.model("blogpost", BlogPostSchema);
+const AdminPostModel = mongoose.model("adminpost", AdminPostSchema);
 
 module.exports = {
   BlogPostSchema,
   BlogPostModel,
+  AdminPostModel,
 };

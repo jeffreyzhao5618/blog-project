@@ -29,7 +29,7 @@ app.use((req, res, next) => {
   else if (req.session.key === process.env.POST_AUTH) {
     next();
   } else {
-    res.json({ message: "not authorized to make this request" });
+    res.json({ error: "not authorized to make this request" });
   }
 });
 

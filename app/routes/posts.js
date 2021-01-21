@@ -18,6 +18,7 @@ router.get("/", (req, res) => {
 // get most recent blog posts from index
 router.get("/all/recent/:index/:limit", (req, res) => {
   bp.BlogPostModel.find({})
+    .sort({ _id: -1 })
     .skip(Number(req.params.index))
     .limit(Number(req.params.limit))
     .exec((err, posts) => {
@@ -33,6 +34,7 @@ router.get("/all/recent/:index/:limit", (req, res) => {
 // get titles of recent blog posts
 router.get("/titles/recent/:limit", (req, res) => {
   bp.BlogPostModel.find({}, "title")
+    .sort({ _id: -1 })
     .limit(Number(req.params.limit))
     .exec((err, titles) => {
       if (err) {
@@ -46,7 +48,6 @@ router.get("/titles/recent/:limit", (req, res) => {
 
 // get one blog post by id
 router.get("/id/:id", (req, res) => {
-  //console.log(req.session);
   bp.BlogPostModel.findById(req.params.id, (err, post) => {
     if (err) {
       console.log(err);
@@ -120,7 +121,7 @@ router.post("/", (req, res) => {
 });
 
 // update blog post by id
-router.post("/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   bp.BlogPostModel.findByIdAndUpdate(
     req.params.id,
     req.body,

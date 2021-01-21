@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const bp = require("../models/BlogPost");
 
 // Checks if user is logged in
 router.get("/login", (req, res) => {
-  console.log(req.session);
   if (req.session.key === process.env.POST_AUTH) {
     res.json({ loggedin: 1 });
   } else res.json({ loggedin: 0 });
@@ -28,12 +28,57 @@ router.post("/login", (req, res) => {
   ) {
     console.log("passed");
     req.session.key = process.env.POST_AUTH;
-    console.log(req.session);
     res.json({ success: "Logged in" });
   } else {
     console.log("failed");
     res.json({ error: "Log in Failed" });
   }
+});
+
+// get adming post
+router.get("/post", (req, res) => {
+  bp.AdminPostModel.findOne({}, (err, post) => {
+    if (err) {
+      console.log(err);
+      res.json({ error: "error getting admin post " });
+    } else {
+      res.json(post);
+    }
+  });
+});
+
+// update admin post if it exists otherwise create a new one
+router.post("/post", (req, res) => {
+  bp.AdminPostModel.findOne({}, "_id", (err, post) => {
+    if (err) {
+      console.log(err);
+    } else {
+      if (post) {
+        bp.AdminPostModel.findByIdAndUpdate(
+          post._id,
+          req.body,
+          { useFindAndModify: false },
+          (err, post) => {
+            if (err) {
+              console.log(err);
+              res.json({ error: "error updating admin post" });
+            } else {
+              res.json(post);
+            }
+          }
+        );
+      } else {
+        bp.AdminPostModel.create(req.body, (err, post) => {
+          if (err) {
+            console.log(err);
+            res.json({ error: "error creating admin post" });
+          } else {
+            res.json(post);
+          }
+        });
+      }
+    }
+  });
 });
 
 module.exports = router;

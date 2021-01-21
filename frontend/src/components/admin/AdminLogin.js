@@ -1,4 +1,5 @@
 import { React, Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../../config";
 
@@ -9,11 +10,12 @@ class AdminLogin extends Component {
     this.state = {
       username: "",
       password: "",
+      redirect: false,
     };
 
-    this.login = this.login.bind();
-    this.changeUsernameHandler = this.changeUsernameHandler.bind();
-    this.changePasswordHandler = this.changePasswordHandler.bind();
+    // this.login = this.login.bind();
+    // this.changeUsernameHandler = this.changeUsernameHandler.bind();
+    // this.changePasswordHandler = this.changePasswordHandler.bind();
   }
 
   login = () => {
@@ -26,8 +28,13 @@ class AdminLogin extends Component {
         },
         { withCredentials: true }
       )
-      .then((test) => {
-        console.log(test);
+      .then((res) => {
+        if (res.data.success) {
+          this.setState({ redirect: true });
+        } else {
+          this.setState({ username: "", password: "" });
+          alert("Login Failed");
+        }
       });
   };
 
@@ -40,43 +47,47 @@ class AdminLogin extends Component {
   };
 
   render() {
-    return (
-      <div className="card mt-5 w-50 mx-auto">
-        <form className="card-body">
-          <div className="form-group">
-            <label htmlFor="inputUsername">Username</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputUsername"
-              autoComplete="username"
-              placeholder="Username"
-              value={this.state.username}
-              onChange={this.changeUsernameHandler}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="inputPassword">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword"
-              autoComplete="current-password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.changePasswordHandler}
-            />
-          </div>
-          <button
-            type="button"
-            className="btn btn-primary mt-3"
-            onClick={this.login}
-          >
-            Log In
-          </button>
-        </form>
-      </div>
-    );
+    if (this.state.redirect) {
+      return <Redirect to="/admin" />;
+    } else {
+      return (
+        <div className="card mt-5 w-50 mx-auto">
+          <form className="card-body">
+            <div className="form-group">
+              <label htmlFor="inputUsername">Username</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputUsername"
+                autoComplete="username"
+                placeholder="Username"
+                value={this.state.username}
+                onChange={this.changeUsernameHandler}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputPassword">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                id="inputPassword"
+                autoComplete="current-password"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.changePasswordHandler}
+              />
+            </div>
+            <button
+              type="button"
+              className="btn btn-primary mt-3"
+              onClick={this.login}
+            >
+              Log In
+            </button>
+          </form>
+        </div>
+      );
+    }
   }
 }
 
