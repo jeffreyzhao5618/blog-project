@@ -10,13 +10,10 @@ function BlogPostPreview(props) {
           {title}
         </a>
         <p className="card-subtitle text-muted">{`${date} ${time}`}</p>
-        <div
-          className="content mb-3"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-        <a className="card-link standard" href={`/post/${_id}`}>
+        <div className="mb-3" dangerouslySetInnerHTML={{ __html: content }} />
+        {/* <a className="card-link standard" href={`/post/${_id}`}>
           Read More
-        </a>
+        </a> */}
         <TagList tags={tags} />
       </div>
     </div>

@@ -56,3 +56,23 @@ a > .home-nav-item:hover {
 .home-nav-item.active {
   background-color: lightcoral;
 }
+
+.top-margin {
+  margin-top: 1.5rem !important;
+}
+
+.video-container {
+  position: relative;
+  width: 80%;
+  padding-top: 45%;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
