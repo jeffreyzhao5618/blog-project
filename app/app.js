@@ -5,10 +5,7 @@ const cookieSession = require("cookie-session");
 const cors = require("cors");
 
 const PORT = process.env.PORT || 9000;
-const whitelist = [
-  "http://localhost:3000",
-  "https://main.d3ij7dq5wbhsdz.amplifyapp.com",
-];
+const whitelist = ["http://localhost:3000", "https://cdotgrass.com"];
 
 const app = express();
 app.use(
