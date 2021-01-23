@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.34cd2eb3.chunk.css",
+    "main.js": "/static/js/main.980ce2ff.chunk.js",
+    "main.js.map": "/static/js/main.980ce2ff.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fcd8cd6b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fcd8cd6b.js.map",
+    "static/js/2.10661cb5.chunk.js": "/static/js/2.10661cb5.chunk.js",
+    "static/js/2.10661cb5.chunk.js.map": "/static/js/2.10661cb5.chunk.js.map",
+    "static/js/3.75d76464.chunk.js": "/static/js/3.75d76464.chunk.js",
+    "static/js/3.75d76464.chunk.js.map": "/static/js/3.75d76464.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.34cd2eb3.chunk.css.map": "/static/css/main.34cd2eb3.chunk.css.map",
+    "static/js/2.10661cb5.chunk.js.LICENSE.txt": "/static/js/2.10661cb5.chunk.js.LICENSE.txt",
+    "static/media/jeffrey-spain-626w.8707b65a.jpg": "/static/media/jeffrey-spain-626w.8707b65a.jpg",
+    "static/media/jeffrey-spain-775w.ece1b45d.jpg": "/static/media/jeffrey-spain-775w.ece1b45d.jpg",
+    "static/media/resume-2020-fall.5450f268.pdf": "/static/media/resume-2020-fall.5450f268.pdf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fcd8cd6b.js",
+    "static/js/2.10661cb5.chunk.js",
+    "static/css/main.34cd2eb3.chunk.css",
+    "static/js/main.980ce2ff.chunk.js"
+  ]
+}
