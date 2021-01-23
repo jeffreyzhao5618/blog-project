@@ -7,8 +7,8 @@ const cors = require("cors");
 const PORT = process.env.PORT || 9000;
 const whitelist = [
   "http://localhost:3000",
-  "https://www.cdotgrass.com",
-  "https://main.d3ij7dq5wbhsdz.amplifyapp.com/",
+  "https://cdotgrass.com",
+  "https://main.d3ij7dq5wbhsdz.amplifyapp.com",
 ];
 
 const app = express();
