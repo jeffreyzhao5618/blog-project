@@ -60,7 +60,7 @@ router.get("/id/:id", (req, res) => {
 
 // get number of blog posts
 router.get("/count", (req, res) => {
-  bp.BlogPostModel.count({}, (err, count) => {
+  bp.BlogPostModel.countDocuments({}, (err, count) => {
     if (err) {
       console.log(err);
       res.json({ error: "error getting number of posts" });
