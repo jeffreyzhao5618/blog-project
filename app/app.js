@@ -5,11 +5,22 @@ const cookieSession = require("cookie-session");
 const cors = require("cors");
 
 const PORT = process.env.PORT || 9000;
+const whitelist = [
+  "http://localhost:3000",
+  "https://main.d3ij7dq5wbhsdz.amplifyapp.com",
+];
 
 const app = express();
 app.use(
   cors({
-    origin: "https://main.d3ij7dq5wbhsdz.amplifyapp.com",
+    // origin: "https://main.d3ij7dq5wbhsdz.amplifyapp.com",
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["POST"],
     credentials: true,
   })
