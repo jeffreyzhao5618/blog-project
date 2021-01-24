@@ -4,7 +4,7 @@
   "description": "Personal Blog",
   "main": "app/app.js",
   "scripts": {
-    "start": "node app/app.js"
+    "start": "RUN_DEV=TRUE node app/app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.11"
+    "mongoose": "^5.11.11",
+    "serverless-http": "^2.7.0"
   }
 }
