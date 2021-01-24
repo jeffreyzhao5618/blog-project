@@ -27,7 +27,11 @@ function HomeNav({ posts_per_page, count }) {
     if (page !== numPages) renderArr.push("ra");
     console.log(renderArr);
     return renderArr.map((symbol, index) => {
-      return <HomeNavItem key={index} symbol={symbol} currPage={page} />;
+      return (
+        <div className="mb-3">
+          <HomeNavItem key={index} symbol={symbol} currPage={page} />
+        </div>
+      );
     });
   }
 }
